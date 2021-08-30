@@ -1,0 +1,83 @@
+{% load static %}
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'res/css/theme.css' %}" />
+    <title>
+        {% block title %}
+        ReleCloud - Expand your horizons
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-translucent-secondary">
+        <img src="{% static 'res/img/small-logo.png' %}" width="60" height="auto" alt="Rocket ship logo" />
+        <a class="navbar-brand tk-elevon" href="#">&nbsp; ReleCloud Space Tourism</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar"
+            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'info_request' %}">Request Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destinations' %}">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li> {% endcomment %}
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main">
+        <div class="jumbotron main-header" style="background-image: url({% static 'res/img/cosmos-db.jpeg' %}); background-size: cover;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{% static 'res/img/bit_cosmos.png' %}" class="img img-fluid" />
+                    </div>
+                    <div class="col-md-8 ml-md-auto align-self-center">
+                        <h1 class="display-1">Expand your horizons</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}'
+            <div class="alert alert-{{message.tags}}" role="alert">
+                <p>{{ message }}</p>
+            </div>   
+            {% endfor %}
+        {% endif %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="mr-3 img-fluid" src="{% static 'res/img/astronaut.jpeg' %}" alt="Astronaut looking into space" />
+                </div>
+                <div class="col-md-8">
+                    {% block content %}
+                    <h1 class="display-4 tk-elevon">Lorem Ipsum Dolor</h1>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p>&copy; Microsoft 2021</p>
+    </footer>
+</body>
+
+</html>
